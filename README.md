@@ -15,8 +15,7 @@ Parts of NodeJS
 
 1. Modules -> They are JS libraries that can be used in a Node JS application  to include a set of functions, To include a module in a Node JS application, use require() function with parenthesis containing the name of the module.
 
-2. Cluster -> NodeJS is build upon the concept of single-threaded programming, a single instance of NodeJS runs in a single thread, to take advantage of multi-core systems the user will sometimes launch a cluster of NodeJS processes to handle the load.
-A cluster can be added this way :-
+2. Cluster -> NodeJS is build upon the concept of single-threaded programming, a single instance of NodeJS runs in a single thread, to take advantage of multi-core systems the user will sometimes launch a cluster of NodeJS processes to handle the load.A cluster can be added this way :-
 
 const cluster = require('cluster');
 
@@ -27,4 +26,29 @@ if(cluster.isWorker){
     cluster.fork();
     cluster.fork();
 }
-3. Global ->
+
+3. Global -> Global objects in NodeJS are available in all Modules. For Example : __dirname, __filename, exports, module, require.
+
+4. Error Handling -> Node JS applications experience 4 types of errors: Standard JS errors like Syntax error and Type error ; System errors like File does not exists, closed socket ; User-specified errors ; Assertion errors happens in case of logical violation. We can handle errors by using try and catch blocks.
+
+5. Streaming -> Streams are objects that let you read and write data continuously. There are four types of streams: Readable; Writable; Duplex (Both readable and writable); Transform (streams that can manipulate data while being read or written) 
+
+6. Buffer -> JS has no mechanism for reading or manipulating streams of binary data. Buffer allows JS achieve that. an empty buffer of length 10 can be created by this method :
+const buf = Buffer.alloc(10);
+
+7. Domain -> It provides a way to handle different I/O operations as a single group. Domain module intercepts errors that remain unhandled. Two methods for intercepting are Internal Binding (Error emitter executes its code inside the run method) and External Binding (Error emitter is explicitly added to a Domain via its add method).
+
+8. DNS -> It is used to connect DNS server and perform name resolution for ex: it is used to look up the IP addresses of the host names. DNS module can also be used for performing name resolution without a network connection. 
+
+9. Debugger ->  NodeJS includes a built-in debugging client. Debugger can be used in the terminal by using the 'inspect' keyword like this < node inspect myScript.js >.
+
+
+# Node JS Express Framework
+
+Express is a flexible NodeJS web application framework which provides a wide set of features to develop both web and mobile applications
+
+Some Core features of express are :
+1. It can be used to design single-page, multi-page and hybrid web applications
+2. It allows to setup middlewares to respond to HTTP requests 
+3. It defines a routing table which is used to perform different actions based on HTTP method and URL 
+4. It allows to dynamically render HTML Pages based on passing arguments to templates
