@@ -52,3 +52,9 @@ Some Core features of express are :
 2. It allows to setup middlewares to respond to HTTP requests 
 3. It defines a routing table which is used to perform different actions based on HTTP method and URL 
 4. It allows to dynamically render HTML Pages based on passing arguments to templates
+
+
+
+# Node JS Architecture
+
+NodeJS uses "Single Threaded Event Loop" architecture allows you to handle multiple concurrent clients at the same time its a very flexible way of being able to scale up your support for many clients. In addition to that NodeJS processing module is based on the JS Event based model along with the JS callback mechanism . 
