@@ -1,5 +1,11 @@
+const { urlencoded } = require('express');
 const express = require('express');
 const app = express();
+
+app.use(express.json());
+app.use(urlencoded({ extended: false }));
+
+app.use('/api/colors', require('./routes/api/colors'));
 
 app.get('/', (req, res) => {
     res.send('Hello World from Express!');
