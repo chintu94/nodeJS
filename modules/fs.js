@@ -17,7 +17,7 @@ const fs = require('fs');
 *            if(err) console.error(err);
 *        })
 *    }
-});
+* });
 */
 
 //! Deleting files and creating directories 

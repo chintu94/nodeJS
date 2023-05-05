@@ -4,6 +4,9 @@ const app = express();
 
 app.use(express.json());
 app.use(urlencoded({ extended: false }));
+setImmediate(() => {
+  console.log('called')
+})
 
 app.use('/api/colors', require('./routes/api/colors'));
 

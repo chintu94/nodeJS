@@ -57,4 +57,9 @@ Some Core features of express are :
 
 # Node JS Architecture
 
-NodeJS uses "Single Threaded Event Loop" architecture allows you to handle multiple concurrent clients at the same time its a very flexible way of being able to scale up your support for many clients. In addition to that NodeJS processing module is based on the JS Event based model along with the JS callback mechanism . 
+NodeJS uses "Single Threaded Event Loop" architecture allows you to handle multiple concurrent clients at the same time its a very flexible way of being able to scale up your support for many clients. In addition to that NodeJS processing module is based on the JS Event based model along with the JS callback mechanism.
+
+# NodeJS Event Loop
+
+The event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded — by offloading operations to the system kernel whenever possible.
+Since most modern kernels are multi-threaded, they can handle multiple operations executing in the background. When one of these operations completes, the kernel tells Node.js so that the appropriate callback may be added to the poll queue to eventually be executed.

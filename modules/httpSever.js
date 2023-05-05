@@ -7,9 +7,19 @@ const data = {
 }
 
 http.createServer((req, res) => {
+  //* res.writeHead(200, { 'Content-Type': 'text/html' }); this is used to write html strings consisting tags
+  if (req.url === '/'){
+    res.write(`
+      <h1>Your are in the Home page</h1>
+    `)
+  } else if (req.url === '/data'){
     res.writeHead(200, { 'Content-Type': 'application/json' })
-    //* res.writeHead(200, { 'Content-Type': 'text/html' }); this is used to write html strings consisting tags
     res.write(JSON.stringify(data));
-    res.end();
+  } else {
+    res.write(`
+      <h1>Oops! Something went wrong</h1>
+    `)
+  }
+  res.end();
 }).listen(8080);
 
