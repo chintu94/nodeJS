@@ -41,3 +41,27 @@ function removeDuplicateWithSet(str){
 
 removeDuplicateWithSet('hello world')
 
+
+//! remove the duplicate charcter from the string
+const removeDups = str => {
+  const set = new Set([]);
+  const res = [];
+  let index = 0
+  
+  while (index < str.length) {
+    const letter = str[index].toLowerCase();
+    if (!set.has(letter)) {
+      set.add(letter);
+      res.push(letter);
+    } else {
+      if (res.indexOf(letter) !== -1) {
+        res.splice(res.indexOf(letter), 1);
+      }
+    }
+    index++;
+  }
+  return res.join('');
+}
+
+console.log(removeDups('I love Javascript'))
+console.log(removeDups('hello world'))
