@@ -1,4 +1,5 @@
 /*
+! JS
 1. Preprocessor and Postprocessors in CSS -> Generally speaking, pre-processing has its own stylesheet languages, such as Sass and LESS, that convert into pure CSS. Post-processing takes that basic CSS, and applies automation/repetition. So, CSS preprocessors (Sass, Less etc.) parse and compile a CSS extension language into plain old CSS, while postprocessors ( Autoprefixer, PostCSS and rework ) parse and process plain old CSS.
 
 2. CRP -> The Critical Rendering Path is the sequence of steps that the browser goes through to convert the HTML, CSS and JavaScript code into pixels on the screen. Optimizing the critical render path improves render performance. There are 5 steps:
@@ -8,7 +9,10 @@
   d. Layout -> Layout steps determines where the elements will be positioned in the screen.
   e. Paint -> This is the step when we are able to see the elements on the screen.
 
-3. SSR in React -> Server side rendering is the process of rendering the complete HTML page on the server in response to a request and returning it to the client. First the client sends a get request to the server, then server gets any data it needs from the database, post that server combines the data with the html templete to make a complete html page and finally sends the complete HTML page back to the client. Once the client gets this HTML as a response, it follows the CRP to paint the page. Pros of SSR are 1. Fatser first contentful paint (FCP) and Time to Interactive (TTI), 2. SEO  optimized, 3. additional budget for client-side Javascript, 4. client computation and bandwidth offloded to the server. Cons of SSR are 1. Full page reload is required for some actions, 2. Since all the processing takes place in server , response may be delayed, 3. server code not optimized. 
+3. Difference between Observable and Promises -> They are as follows :
+  1) A Promise handles a single event when an async operation completes or fails however qn Observable is like a Stream (in many languages) and allows to pass zero or more events where the callback is called for each event.
+  2) Observable are cancellable however Promises are not cancellable.
+  3) While a Promise starts immediately, an Observable only starts if you subscribe to it. This is why Observables are called lazy.
 
 4. Webpack -> Webpack budles all the HTML, CSS, JS, images files together to form static assets ready for deployment. Its setup is done by installing the packages like webpack, webpack-cli, webpack-dev-server. Post this we create a webpack.config.js file, which will have path and html-webpack-plugin packages imported. we define a module.export object with `output` as the path of bundle.js file, `plugins` for the html file, devserver ports and module rules. We also need to add the scripts for build command using <webpack --mode production>. Post running the command it creats the bundle.js file.
 
@@ -82,11 +86,32 @@ function throttle(cb, delay = 1000){
 
 28. stopImmediatePropagation -> The stopImmediatePropagation() method prevents other listeners of the same event from being called.
 
+
+
+
+! React
+
+1. Synthetic events -> Whenever we are triggering an event in a React component, we are not actually dealing with the real DOM event, instead, we are dealing with React's custom event type, a synthetic event. All the onClick(s), onBlur(s), onChange(s) you have ever used in your react components, these are not the real ones, these are react's synthetic events😇. Another catchy benefit of synthetic events is that React reuses these events objects, by pooling them, which results in performance gains. Synthetic events combine the response of different browser's native events into one API, ensuring that the events are consistent across different browsers.
+
+2. Event pooling -> Event data is sent to the callback when an event fires, known as event pooling. The object is then cleaned up for later use. It means that we can't save event data in the state and then access it asynchronously, run a timeout, and reassess the event. To do that we have to call event.persist() method.
+
+3. SSR in React -> Server side rendering is the process of rendering the complete HTML page on the server in response to a request and returning it to the client. First the client sends a get request to the server, then server gets any data it needs from the database, post that server combines the data with the html templete to make a complete html page and finally sends the complete HTML page back to the client. Once the client gets this HTML as a response, it follows the CRP to paint the page. Pros of SSR are 1. Fatser first contentful paint (FCP) and Time to Interactive (TTI), 2. SEO  optimized, 3. additional budget for client-side Javascript, 4. client computation and bandwidth offloded to the server. Cons of SSR are 1. Full page reload is required for some actions, 2. Since all the processing takes place in server , response may be delayed, 3. server code not optimized. We use the function <getServerSideProps>.
+
+4. SSG in React -> Static site generation describes the process of building websites that render at build time. The output is an HTML file, assets such as JavaScript and CSS, and a few other static files. We use the function <getStaticProps>. The page will be pre-rendered at build time.
+
+5. ISR in React -> Incremental Static Regeneration (ISR) enables you to use static-generation ( update static content instantly ) on a per-page basis, without needing to rebuild the entire site. With ISR, you can retain the benefits of static while scaling to millions of pages. Static pages can be generated at runtime (on-demand) instead of at build-time with ISR.
+
+6. HOC -> A higher-order component acts as a container for other components. This helps to keep components simple and enables re-usability. They are generally used when multiple components have to use a common logic. 
+
+7. Micro-Frontends -> The idea of micro front-ends is to bring the same advantages to the modern development workflow. It means breaking down monolithic projects into smaller, more manageable pieces, which are independently developed and owned by respective teams, with the power to build and ship simultaneously. This concept can provide great advantages like simple, decoupled codebases, autonomous teams, independent releases, and incremental upgrades. The development process is greatly accelerated, scaled, and made more efficient.
+
+
+
 */
 
 
 /*
-
+  Public Sepient 
   HTML,CSS :
     ? Able to create Form in native HTML and submit without JS. 
     ? Able to add validations to form. Knows how to use FormData API. 
@@ -113,4 +138,29 @@ function throttle(cb, delay = 1000){
     ? stagedWebServers - Apache/Nginx
     ? Bundlers: Able to explain concept of Monorepo and related tools (nx, turborepo)
     ? Experience configuring a module bundler - webpack/esbuild/rollup/vite
+
+  React JS:
+    ? Able to render a component in loop and understands best practices related to key attribute
+    ? Able to demonstrate use of fragments, useEffect, useState
+    ? Able to style the component using traditional css or css-in-js
+    ? Able to create nested components, and write clean JSX markup (and uses atomic design principle)
+    ? Able to do conditional rendering
+    ? Able to import & export components through different files (both default and named exports)
+    Able to create form and handle submitting data using Ajax
+    ? Able to bind events to form submit and add validation to form fields
+    ? Able to write functional unit test cases for react component using enzyme/RTL (not snapshot)
+    Able to demonstrate handling error using error boundries
+    Has worked with various rendering patterns in React and Next JS e.g. SSR, CSR, SSG, ISR and able to define them
+    Able to define purpose of useRef with real life use cases and best practices
+    Able to explain usecases for using Context API and how to use it with useReducer pattern
+    Able to explain and create react specific design patters e.g. Custom Hooks, Higher Order Components, Render Props, Compound Component, etc
+    Able to explain react routing/next routing 
+    Able to explain route based chunking, react lazy and suspense
+    Able to give PoV on SPA and MPA
+    Understands public and private npm registry and publishing of packages
+    Able to explain using environment variables using dotenv module
+    Able to explain importance of logging in server application, and best practices around logging like log levels and log redaction
+    Able to give PoV on various state management techniques e.g. Redux, redux toolkit, react-query, recoil, jotai, context api, xstate, Apollo Client, etc. 
+    Able to give explain handling of side-effects with state management library (e.g. redux thunk, saga, etc)
+    Able to demonstrate memoization in react using useMemo and useCallback and explain different use cases for each of them
 */
