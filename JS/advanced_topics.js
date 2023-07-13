@@ -86,7 +86,12 @@ function throttle(cb, delay = 1000){
 
 28. stopImmediatePropagation -> The stopImmediatePropagation() method prevents other listeners of the same event from being called.
 
-
+29. SOLID principles -> They are a set of software designs principles which guide developers in building robust, maintainable applications while minimizing the cost of changes. They are :-
+  S : Single responsibility principle -> A class, a module, or a function should be only responsible for one actor. So, it should have one and only one reason to change. This means that if a class's functionality is to manage HR related queries then it should only have methods related to that, if we add a method which deals with finance related queries in a HR class then if we need to update a function for the HR or finance department, you will have to change the whole class which will affecting both HR and finance. 
+  O : Open-closed principle -> According to this principle, we should be able to add new features to applications easily, but we should not introduce breaking changes to the existing code.
+  L : Liskov substitution principle -> The Liskov principle states that we should not replace a parent class with its subclasses if they create unexpected behaviors in the application.
+  I : Interface segregation principle -> This principle is related to interfaces and focuses on breaking large interfaces into smaller ones.
+  D : Dependency inversion principle -> Dependency inversion is all about decupling your code. Following this principle will give you the flexibility to scale and change your application at the highest levels without any issues.
 
 
 ! React
@@ -105,7 +110,39 @@ function throttle(cb, delay = 1000){
 
 7. Micro-Frontends -> The idea of micro front-ends is to bring the same advantages to the modern development workflow. It means breaking down monolithic projects into smaller, more manageable pieces, which are independently developed and owned by respective teams, with the power to build and ship simultaneously. This concept can provide great advantages like simple, decoupled codebases, autonomous teams, independent releases, and incremental upgrades. The development process is greatly accelerated, scaled, and made more efficient.
 
+8. Error Boundary -> Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) {
+    ? Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    ? You can also log the error to an error reporting service
+    logErrorToMyService(error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      ? You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children; 
+  }
+}
+
+9. Compound components -> Compound components are a pattern in which components are used together such that they share an implicit state that lets them communicate with each other in the background. In other words, when multiple components work together to have a shared state and handle logic together, they are called compound components.
+
+10. Render props -> A render prop is a prop on a component, which value is a function that returns a JSX element. The component itself does not render anything besides the render prop. Instead, the component simply calls the render prop, instead of implementing its own rendering logic.
+
+11. SPA and MPA in react ->  SPA (Single-page applications) is strongly decoupled, meaning that the front-end and back-end are separate. Single-page applications use APIs developed by server-side developers to read and display data. In MPA's (Multi-page applications), the front-end and back-end are more interdependent. All coding is usually housed under one project.
+
+12. Environment Variables in React -> Using Environment variables is very important to keep your private information secure. It may contain your API keys or database credentials or any other private information. It's always recommended to use environment variables to keep the information secure and you should never write them directly in your code. Also, you need to make sure that, you add the environment variables file name to your .gitignore file so it will not be added to your Git repository when you push the code to the repository. Environment variables help because they can let you customize settings without changing the source code.
+
+13. 
 
 */
 
@@ -146,21 +183,21 @@ function throttle(cb, delay = 1000){
     ? Able to create nested components, and write clean JSX markup (and uses atomic design principle)
     ? Able to do conditional rendering
     ? Able to import & export components through different files (both default and named exports)
-    Able to create form and handle submitting data using Ajax
+    ? Able to create form and handle submitting data using Ajax
     ? Able to bind events to form submit and add validation to form fields
     ? Able to write functional unit test cases for react component using enzyme/RTL (not snapshot)
-    Able to demonstrate handling error using error boundries
-    Has worked with various rendering patterns in React and Next JS e.g. SSR, CSR, SSG, ISR and able to define them
-    Able to define purpose of useRef with real life use cases and best practices
-    Able to explain usecases for using Context API and how to use it with useReducer pattern
-    Able to explain and create react specific design patters e.g. Custom Hooks, Higher Order Components, Render Props, Compound Component, etc
-    Able to explain react routing/next routing 
-    Able to explain route based chunking, react lazy and suspense
-    Able to give PoV on SPA and MPA
+    ? Able to demonstrate handling error using error boundries
+    ? Has worked with various rendering patterns in React and Next JS e.g. SSR, CSR, SSG, ISR and able to define them
+    ? Able to define purpose of useRef with real life use cases and best practices
+    ? Able to explain usecases for using Context API and how to use it with useReducer pattern
+    ? Able to explain and create react specific design patters e.g. Custom Hooks, Higher Order Components, Render Props, Compound Component, etc
+    ? Able to explain react routing/next routing 
+    ? Able to explain route based chunking, react lazy and suspense
+    ? Able to give PoV on SPA and MPA
     Understands public and private npm registry and publishing of packages
-    Able to explain using environment variables using dotenv module
-    Able to explain importance of logging in server application, and best practices around logging like log levels and log redaction
-    Able to give PoV on various state management techniques e.g. Redux, redux toolkit, react-query, recoil, jotai, context api, xstate, Apollo Client, etc. 
-    Able to give explain handling of side-effects with state management library (e.g. redux thunk, saga, etc)
-    Able to demonstrate memoization in react using useMemo and useCallback and explain different use cases for each of them
+    ? Able to explain using environment variables using dotenv module
+    ? Able to explain importance of logging in server application, and best practices around logging like log levels and log redaction
+    ? Able to give PoV on various state management techniques e.g. Redux, redux toolkit, react-query, recoil, jotai, context api, xstate, Apollo Client, etc. 
+    ? Able to give explain handling of side-effects with state management library (e.g. redux thunk, saga, etc)
+    ? Able to demonstrate memoization in react using useMemo and useCallback and explain different use cases for each of them
 */
